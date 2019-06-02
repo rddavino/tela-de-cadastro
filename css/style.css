@@ -1,0 +1,229 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: #272727;
+    color: #a7a7a7;
+    font-family: sans-serif;
+    margin: 0;
+    
+}
+
+h1{
+  font-size: 32px;
+}
+
+h2{
+  font-size: 24px;
+}
+
+h3{
+  font-size: 16px;
+}
+
+input{
+  border-bottom: 1px solid   rgb(70, 188, 224) !important;
+}
+
+input:hover{
+border-bottom: 1px solid #fff !important;
+}
+
+label{
+  color:  #67eaf3 !important;
+}
+
+fieldset{
+  padding-top: 0.35em;
+  padding-right: 0em;
+  padding-bottom: 2.75em;
+  padding-left: 0em;
+  border-radius: 5px;
+  border: 1px solid #67eaf3;
+  box-sizing: border-box;
+}
+
+legend{
+  color: #67eaf3;
+  padding: 10px;
+  text-align: center;
+}
+
+.wrapper-content{
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  }
+
+.btn-large{
+  margin: 10px 5px;
+  font-weight: bold;
+  border-radius: 90px;
+}
+
+.carousel .carousel-item { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+
+
+.tabs .indicator {
+  height: 2px;
+  background-color: #67eaf3 !important;
+ }
+
+ .tabs{
+   background-color: transparent !important; 
+   border-radius: 5px 5px 0px 0px;
+   
+}
+
+ .tabs .tab a:hover  {
+  background-color: #84ffff !important;
+  color:  #6a1b9a !important;
+  border-radius: 5px 5px 0px 0px;
+ }
+
+ .tabs .tab a.active{
+  background-color: #66298b !important;
+  color:  #84ffff !important;
+  border-radius: 5px 5px 0px 0px;
+ }
+
+ .content_estados_background{
+    background-image: linear-gradient(#65298b, #91238c, #bd1672);
+    border-radius: 0px 0px 5px 5px;
+}
+ 
+.tabs_coluna{
+  margin-top: 70px;
+  
+}
+ .content_estados_logo{
+    height: 100px;
+    display: flex;
+    justify-content: center;  
+ }
+
+ .content_cidades_logo{
+  height: 100px;
+  display: flex;
+  justify-content: center;  
+}
+
+.content_estados_logo img{
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  animation:  pulse
+  2s
+  ease-out
+  0s
+  alternate
+  infinite
+  none
+  running;
+  position: absolute;
+}
+
+.content_cidades_logo img{
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  animation:  pulse
+  2s
+  ease-out
+  0s
+  alternate
+  infinite
+  none
+  running;
+  position: absolute;
+}
+
+.content_cidades_background{
+  background-image: linear-gradient(#65298b, #4d2391, #163dbd);
+    border-radius: 0px 0px 5px 5px;
+}
+
+.input_consulta{[
+  margin-top: 30px;
+]}
+
+@keyframes pulse {
+  0% {
+    width: 60px
+  }
+  50% {
+    width: 65px;
+  }
+  100%{
+    width: 60px;
+  }
+  
+}
+
+
+.content_estados_action{
+  margin-top: 24px;
+  color: rgb(153, 240, 255);
+}
+
+.content_cidades_action{
+  margin-top: 24px;
+  color: rgb(153, 240, 255);
+}
+
+.content_title{
+  margin-top: 50px;
+}
+
+
+@media screen and (min-width: 600px){
+ 
+  fieldset{
+   border: 0px;
+   padding: 0xp;
+  }
+
+  legend{
+    margin-left: 55px;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 900px){
+  
+  
+  .btn-large:hover{
+    background-color: rgb(77, 13, 138) !important;
+    color: #fff !important;
+    border: none !important;
+  }
+
+}
+
+@media screen and (min-width: 0px){
+  #desktop{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 993px){
+   #mobile{
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: 1000px){
+  fieldset{
+    width: 80%;
+    margin: auto;
+    padding: 50px;
+   
+    border-radius: 5px;
+    border: 1px solid #67eaf3;
+    box-sizing: border-box;
+  }
+
+  legend{
+    text-align: center;
+  }
+
+}
