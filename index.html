@@ -12,19 +12,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="img/logozoox.ico" />
-
-
-
 </head>
 
 <body>
     <div class="container mycontainer">
-        <!--
-        <div id="content_title" class="center content_title">
-            <h1>PAINEL</h1>
-        </div>
-        -->
-
         <div id="wrapper_content" class="row wrapper-content">
             <div class="col s12 m12 l12">
 
@@ -48,7 +39,7 @@
                         </div>
                     </div>
                     <!--Formulário para cadastro de novo estado-->
-                    <div class="formulario">
+                    <div>
                         <form  id="form_insere_estado" autocomplete="off">
                             <fieldset>
                                 <legend>Cadastro de Estado</legend>
@@ -71,7 +62,8 @@
                         </form>
                     </div>
 
-                    <div class="formulario">
+                    <div>
+                        <!--Edição de estados-->
                         <form  id="form_edita_estado" autocomplete="off">
                             <fieldset>
                                 <legend>Edição de Estado</legend>
@@ -85,9 +77,9 @@
                                         <label for="abreviacao_estado_editado">Abreviação</label>
                                     </div>
                                     <div id="btn_fechar_form" class="col s12 m12 l12 center">
-                                        <input id="btn_editar_estado" type="submit"
-                                            class="btn-large cyan accent-1 purple-text" value="Editar">
-                                        <a href="#" class="btn-large purple lighten-1">Voltar</a>
+                                        <input id="btn_editar_estado_confirmacao" type="submit"
+                                            class="btn-large cyan accent-1 purple-text" value="Confirmar">
+                                        <a id="btn_voltar_edicao" class="btn-large purple lighten-1">Voltar</a>
                                     </div>
                                 </div>
                             </fieldset>
@@ -99,51 +91,31 @@
                             <div class="col s12 m12 l12">
                                 <div id="content_estados_consulta">
                                    
-                                    <form action="" autocomplete="off">
+                                    <form action="" autocomplete="off" id="form_consultar_estado">
                                         <div class="input-field">
                                             <input id="consultar" type="text" autocomplete="off" class="validate white-text center input_consultar"
                                                 placeholder="Digite o estado que você procura">
                                             <label for="consultar"></label>
                                         </div>
                                     </form>
-
-                                    <!--inicio do set de elementos relacionados a consulta de estado para DESKTOP-->
-                                    <div id="desktop" class="">
-                                        <!--Botao para desktop que mostra os estados cadastrados numa tabela-->
-                                        <div class="col s12 m12 l12 center">
-                                            <a href="#" id="btn_consultar" class="btn-large blue lighten-1">
-                                                <i class="material-icons left ">search</i>PESQUISAR</a>
-                                        </div>
-                                    </div>
-                                    <!--Fim do set de elementos relacionados a consulta de estado para DESKTOP-->
-
-                                    <!--inicio do set de elementos relacionados a consulta de estado para MOBILE-->
-                                    <div id="mobile" class="">
-                                        <!--Botão para mobile que mostra os estados cadastrados num card -> não é necessário numa consulta por ajax
-                                        <div id="" class="col s12 m12 l12 center">
-                                            <a href="#" id="btn_consultar_estado_mobile"
-                                                class="btn-large purple lighten-2">
-                                                <i class="material-icons left">search</i>PESQUISAR</a>
-                                        </div>-->
-                                        <!--Card que mostra os estados cadastrados-->
-
+                                    <div>
                                         <div id="card_estados_cadastrados">
-                                            <div class="row ">
+                                            <div class="row">
                                                 <div class="col s12 m12 center">
-                                                    <div id="content_pesquisa_estado">
+                                                    <div id="content_pesquisa_estado" class="content_pesquisa">
 
                                                     </div>
-                                                    <a href="#" id="btn_editar_estado_mobile" class="btn-large purple lighten-1"><i class="material-icons left">edit</i>Editar
+                                                    <a href="#" id="btn_editar_estado_opcao" class="btn-large purple lighten-1"><i class="material-icons left">edit</i>Editar
                                                     </a>
                                                     <a href="#" id="btn_excluir_estado" class="btn-large purple lighten-3"><i class="material-icons left">delete</i>Excluir
                                                     </a>
                                                 </div>
-                                                <div id="btn_fechar_pesquisa" class="btn-floating btn-large black white-text center"><i class="material-icons left">close</i></div>
-
                                             </div>
+                                            <div id="btn_fechar_pesquisa" class="btn_fechar_pesquisa">
+                                                    <img src="img/close.png">
+                                                </div>
                                         </div>
                                     </div>
-                                    <!--Fim do set de elementos relacionados a consulta de estado para MOBILE-->
 
                                 </div>
                             </div>
@@ -226,6 +198,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/app.js"></script>
 
 
