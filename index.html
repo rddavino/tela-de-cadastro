@@ -21,8 +21,9 @@
 
                 <!--tabs estado e cidade-->
                 <ul id="tabs-swipe" class="tabs">
-                    <li class="tab col s6"><a class="active" href="#content_estados">ESTADOS</a></li>
-                    <li class="tab col s6"><a href="#content_cidades">CIDADES</a></li>
+                    <li class="tab col s6 l6"><a class="active" href="#content_estados">ESTADOS</a></li>
+                    <li class="tab col s6 l6"><a href="#content_cidades2">CIDADES</a></li>
+
                 </ul>
                 <!--conteudo da cadastro de estados-->
                 <div id="content_estados" class="col s12 m12 l12 content_estados_background">
@@ -111,8 +112,8 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div id="btn_fechar_pesquisa" class="btn_fechar_pesquisa">
-                                                    <img src="img/close.png">
+                                            <div class="btn_fechar_pesquisa">
+                                                    <img src="img/close.png" id="btn_fechar_pesquisa_estado">
                                                 </div>
                                         </div>
                                     </div>
@@ -123,65 +124,98 @@
                     </div>
                 </div>
 
-                <!--conteudo da cadastro de cidades-->
-                <div id="content_cidades" class="col s12 m12 l12  content_cidades_background">
+
+<!--========================CIDADES=================================-->
+                <div id="content_cidades2" class="col s12 m12 l12 content_cidades_background">
                     <div class="container center">
                         <div class="content_cidades_logo">
                             <!--ícone cidades-->
                             <img src="img/cidade_icon.png" alt="">
                         </div>
-
+    
                         <div class="content_cidades_action">
-                            <!--botão para inserir cidades-->
-
-                            <a href="#" id="btn_form_insere_cidade" class="btn-large cyan accent-1 purple-text">Inserir
-                                Cidade</a>
+                           <!--título e botão para inserir estados-->
+                           <a href="#" id="btn_form_insere_cidade" class="btn-large cyan accent-1 purple-text">Inserir
+                               cidade</a>
                         </div>
                     </div>
-
-                    <div class="formulario">
-                        <form id="form_insere_cidade" autocomplete="off">
+                    <!--Formulário para cadastro de nova cidade-->
+                    <div>
+                        <form  id="form_insere_cidade" autocomplete="off">
                             <fieldset>
-                                <legend>Cadastro de Cidade</legend>
+                                <legend>Cadastro de Cidades</legend>
                                 <div class="container">
                                     <div class=" col s12 m12 l8 input-field">
-                                        <input id="nom_cidade" type="text" autocomplete="off" class="validate white-text">
+                                        <input id="nome_cidade" type="text" class="validate white-text">
                                         <label for="nome_cidade">Nome</label>
                                     </div>
-                                    <div class="col s12 m12 l4 input-field white-text">
-                                        <select>
-                                            <option value="Estado" disabled selected></option>
-                                            <option value="1">Option 1</option>
-                                            <option value="2">Option 2</option>
-                                            <option value="3">Option 3</option>
-                                          </select>
-                                         
+                                    <div class="col s12 m12 l4 input-field">
+                                        <input id="estado_cidade" type="text" class="validate white-text">
+                                        <label for="estado_cidade">UF</label>
                                     </div>
-                                    <div id="btn_fechar_form_cidade" class="col s12 m12 l12 center">
-                                        <input type="submit" class="btn-large cyan accent-1 purple-text"
-                                            value="cadastrar">
+                                    <div id="btn_fechar_form_cidades" class="col s12 m12 l12 center">
+                                        <input id="btn_cadastrar_cidade" type="submit"
+                                           class="btn-large cyan accent-1 purple-text" value="cadastrar">
                                         <a href="#" class="btn-large purple lighten-1">Voltar</a>
                                     </div>
                                 </div>
                             </fieldset>
                         </form>
                     </div>
-
+    
+                    <div>
+                        <!--Edição de cidades-->
+                        <form  id="form_edita_cidade" autocomplete="off">
+                            <fieldset>
+                                <legend>Edição de Cidades</legend>
+                                <div class="container">
+                                    <div class=" col s12 m12 l8 input-field">
+                                        <input id="nome_cidade_editada" placeholder="Estado" type="text" class="validate white-text">
+                                        <label for="nome_cidade_editada">Nome</label>
+                                    </div>
+                                    <div class="col s12 m12 l4 input-field">
+                                        <input id="estado_cidade_editada" placeholder="UF" type="text" class="validate white-text">
+                                        <label for="estado_cidade_editada">Estado</label>
+                                    </div>
+                                    <div id="btn_fechar_form" class="col s12 m12 l12 center">
+                                        <input id="btn_editar_cidade_confirmacao" type="submit"
+                                            class="btn-large cyan accent-1 purple-text" value="Confirmar">
+                                        <a id="btn_voltar_edicao_cidade" class="btn-large purple lighten-1">Voltar</a>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!--Formulário para consulta cidades cadastrados-->
                     <div class="container">
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <div id="content_cidades_consulta">
-                                    <form action="">
+                                <div id="content_cidades_consulta">                                       
+                                    <form autocomplete="off" id="form_consultar_cidades">
                                         <div class="input-field">
-                                            <input id="consultar" type="text" class="validate white-text center"
+                                            <input id="consultar_cidade" type="text" autocomplete="off" class="validate white-text center input_consultar"
                                                 placeholder="Digite a cidade que você procura">
-                                            <label for="consultar"></label>
-                                        </div>
-                                        <div id="btn_consultar_cidade" class="col s12 m12 l12 center">
-                                            <a href="#" id="btn_consultar" class="btn-large purple lighten-1">
-                                                <i class="material-icons left">search</i>PESQUISAR</a>
+                                            <label for="consultar_cidade"></label>
                                         </div>
                                     </form>
+                                    <div>
+                                        <div id="card_cidades_cadastradas">
+                                            <div class="row">
+                                                <div class="col s12 m12 center">
+                                                    <div id="content_pesquisa_cidade" class="content_pesquisa_cidade">
+    
+                                                    </div>
+                                                    <a href="#" id="btn_editar_cidade_opcao" class="btn-large purple lighten-1"><i class="material-icons left">edit</i>Editar
+                                                    </a>
+                                                    <a href="#" id="btn_excluir_cidade" class="btn-large purple lighten-3"><i class="material-icons left">delete</i>Excluir
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="btn_fechar_pesquisa">
+                                                <img src="img/close.png" id="btn_fechar_pesquisa_cidade" >
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -189,8 +223,6 @@
                 </div>
             </div>
         </div>
-
-
 
 
     </div>

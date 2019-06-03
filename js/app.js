@@ -1,18 +1,28 @@
 
 $(document).ready(function () {
 
-    var estados = [];
-    var cidades = [];
+    var estados = [];   
     var abreviacoes = [];
+    var cidades = [];
+    var estadosCidades = [];
     var indexEstado;
+    var estado; 
+    var abreviacao;
+    
     
     
     $('ul.tabs').tabs();
     $("#form_insere_estado").hide();
-    $("#form_edita_estado").hide();
     $("#form_insere_cidade").hide();
+
+    $("#form_edita_estado").hide();
+    $("#form_edita_cidade").hide();
+    
     $("#btn_fechar_form").hide();
+
     $("#card_estados_cadastrados").hide();
+    $("#card_cidades_cadastradas").hide();
+
     $('select').formSelect();
 
     
@@ -26,12 +36,13 @@ $(document).ready(function () {
         $("#btn_fechar_form").show(500);
         return false;
     })
+
     
     /*CADASTRO DE ESTADO*/
     $("#btn_cadastrar_estado").on('click',function(){
 
-        var estado = $("#nome_estado").val();
-        var abreviacao = $("#abreviacao_estado").val();
+        estado = $("#nome_estado").val();
+        abreviacao = $("#abreviacao_estado").val();
 
         if(estados.indexOf(estado) != -1){
             //estado cadastrado
@@ -69,7 +80,7 @@ $(document).ready(function () {
         return false;
     })
 
-    /*DISMISS PESQUISA DO ESTADO*/
+    /*DESISTE DA PESQUISA DO ESTADO*/
     $("#btn_fechar_pesquisa").on('click', function(){
         $("#card_estados_cadastrados").slideUp('slow');
     })
@@ -92,8 +103,8 @@ $(document).ready(function () {
         return false;
     })
 
-    /*DISMISS EDICAO DO ESTADO*/
-    $("#btn_fechar_pesquisa").on('click', function(){
+    /*DESISTE DA EDICAO DO ESTADO*/
+    $("#btn_fechar_pesquisa_estado").on('click', function(){
         $("#card_estados_cadastrados").slideUp('slow');
         document.getElementById("form_consultar_estado").reset();  
 
@@ -171,7 +182,8 @@ $(document).ready(function () {
 
     /*========================= CIDADE ========================== */
 
-    $("#btn_form_insere_ciade").on('click', function () {
+    /*OPTA POR INSERIR CIDADE*/
+    $("#btn_form_insere_cidade").on('click', function () {
         $("#btn_form_insere_cidade").hide();
         $("#form_insere_cidade").slideDown('slow');
         $("#btn_fechar_form").show(500);
@@ -182,79 +194,78 @@ $(document).ready(function () {
     $("#btn_cadastrar_cidade").on('click',function(){
 
         var cidade = $("#nome_cidade").val();
-        var abreviacao = $("#abreviacao_estado").val();
+        var estadoCidade = $("#estado_cidade").val();
 
-        if(cidades.indexOf(cidade) != -1){
-            //cidade cadastrada
-            //exibir cidade
-            swal("Eita!", "Essa cidade já foi cadastrada.", "error");
-            $("#content_pesquisa_cidade").text(cidade);
-
-        }else{
-            //cidade não cadastrada
-            cidades.push(cidade);
-            abreviacoes.push(abreviacao);
-            swal("Bom Trabalho!", "Cidade cadastrada com sucesso.", "success");
-        }
-        document.getElementById("form_insere_cidade").reset();
-        
-        console.log(cidades);
+            if(cidades.indexOf(cidade) != -1){
+                //cidade cadastrada
+                //exibir cidade
+                swal("Eita!", "Essa cidade já foi cadastrada.", "error");
+                $("#content_pesquisa_cidade").text(cidade);
+    
+            }else{
+                //cidade não cadastrada
+                cidades.push(cidade);
+                estadosCidades.push(estadoCidade);
+    
+                swal("Bom Trabalho!", "Cidade cadastrada com sucesso.", "success");
+            }
+            document.getElementById("form_insere_cidade").reset();
     })
 
-    $("#btn_fechar_form").on('click', function () {
+    /*DESISTE DE INSERIR CIDADE*/
+    $("#btn_fechar_form_cidades").on('click', function () {
         $("#form_insere_cidade").slideUp('slow');
         $("#btn_form_insere_cidade").show();
         return false;
     })
 
     /*BUSCA POR CIDADE E EXIBIÇÃO*/
-    $("#consultar").keyup(function () {
-        var cidadePesquisado = $("#consultar").val();
+    $("#consultar_cidade").keyup(function () {
+        var cidadePesquisada = $("#consultar_cidade").val();
 
-        $("#content_pesquisa_cidade").text("Estado não encontrado");
-        if(cidades.indexOf(cidadePesquisado) !== -1){
-            //exibir
-            $("#content_pesquisa_cidade").text(cidadePesquisado);
+        $("#content_pesquisa_cidade").text("Cidade não encontrada");
+        if(cidades.indexOf(cidadePesquisada) !== -1){
+            
+            $("#content_pesquisa_cidade").text(cidadePesquisada);
         }
-        $("#card_cidades_cadastrados").slideDown('slow');
+        $("#card_cidades_cadastradas").slideDown('slow');
         return false;
     })
 
-    /*DISMISS PESQUISA DO CIDADE*/
-    $("#btn_fechar_pesquisa").on('click', function(){
-        $("#card_cidades_cadastrados").slideUp('slow');
+    
+    /*DESISTE DA PESQUISA DO CIDADE (X)*/
+    $("btn_fechar_pesquisa_cidade").on('click', function(){
+        $("#card_cidades_cadastradas").slideUp('slow');
     })
 
-
-    /*OPTANDO POR EDITAR CIDADE*/
+    /*OPTA POR EDITAR CIDADE*/
     $("#btn_editar_cidade_opcao").on('click', function (){
-        $("#card_cidades_cadastrados").slideUp('slow'); 
+        $("#card_cidades_cadastradas").slideUp('slow'); 
         $("#form_edita_cidade").slideDown('slow');
 
-        //pegar o valor do input do estado pesquisado
-        var cidadePesquisada = $("#consultar").val();
+        //pega o valor do input da cidade pesquisado   
+        var cidadePesquisada = $("#consultar_cidade").val();
         indexCidade = cidades.indexOf(cidadePesquisada);
         
-        //colocar esse valor no input do estado editado
-        $("#nome_cidade_editado").val(cidadePesquisada);
-        $("#abreviacao_cidade_editado").val(abreviacoes[indexCidade]);
+        //coloca esse valor no input da cidade editado
+        $("#nome_cidade_editada").val(cidadePesquisada);
+        $("#estado_cidade_editada").val(estado[indexCidade]);
         
         $("#btn_fechar_form").show(500);
         return false;
     })
 
-    /*DISMISS EDICAO DO CIDADE*/
-    $("#btn_fechar_pesquisa").on('click', function(){
-        $("#card_cidades_cadastrados").slideUp('slow');
+    /*DESISTE DE EDITAR DO CIDADE*/
+    $("#btn_fechar_pesquisa_cidade").on('click', function(){
+        $("#card_cidades_cadastradas").slideUp('slow');
         document.getElementById("form_consultar_cidade").reset();  
-
     })
 
-    /*CONFIRMANDO EDICAO DO CIDADE*/
+    /*CONFIRMA EDICAO DO CIDADE*/
     $("#btn_editar_cidade_confirmacao").on('click', function (){
       
         swal({
-            title: "Tem Certeza?",
+            title:"Tem Certeza?",
             text: "Essa ação não poderá ser desfeita",
             icon: "warning",
             buttons: true,
@@ -263,7 +274,9 @@ $(document).ready(function () {
           .then((willEdit) => {
             if (willEdit) {
                 var cidade = $("#nome_cidade_editado").val();
-                var abreviacao = $("#abreviacao_cidade_editado").val();
+                //var abreviacao = $("#estado_cidade_editada").val();
+                var abreviacao = $("#abreviacao_estado_editado").val();
+
                 cidades[indexCidade] = cidade;
                 abreviacoes[indexCidade] = abreviacao;
                 //console.log(cidades);
@@ -281,14 +294,13 @@ $(document).ready(function () {
         
     })
 
-
-    $("#btn_voltar_edicao").on('click', function(){
+    $("#btn_voltar_edicao_cidade").on('click', function(){
         $("#form_edita_cidade").slideUp('slow');
-        document.getElementById("form_consultar_cidade").reset();  
+        document.getElementById("form_consultar_cidades").reset();  
 
     })
 
-    /*EXCLUIR CIDADE*/
+    /*EXCLUI CIDADE*/
     $("#btn_excluir_cidade").on('click', function (){
 
         swal({
@@ -300,12 +312,12 @@ $(document).ready(function () {
           })
           .then((willDelete) => {
             if (willDelete) {
-                var cidadePesquisado = $("#consultar").val();
-                var indexCidade = estados.indexOf(cidadePesquisado);
+                var cidadePesquisada = $("#consultar_cidade").val();
+                var indexCidade = cidades.indexOf(cidadePesquisada);
                 cidades.splice(indexCidade,1);
                 $("#form_edita_cidade").slideUp('slow');
-                $("#card_cidades_cadastrados").slideUp('slow');
-                document.getElementById("form_consultar_cidade").reset();  
+                $("#card_cidades_cadastradas").slideUp('slow');
+                document.getElementById("form_consultar_cidades").reset();  
                 console.log(cidades);
               swal("Poof! Cidade excluída", {
                 icon: "success",
@@ -313,11 +325,6 @@ $(document).ready(function () {
             } else {
               swal("Ufa! Essa foi por pouco. Você não excluiu nada.");
             }
-          });
-        
-        //exibir mensagem
-
+        });
     })
-
-
 });

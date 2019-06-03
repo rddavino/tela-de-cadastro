@@ -191,6 +191,16 @@ legend{
   padding: 20px;
 }
 
+.content_pesquisa_cidade{
+  font-size: 20px;
+  margin: 20px 0px 10px 0px; 
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid #46bce0;
+  padding: 20px;
+}
+
 
 .swal-button:not([disabled]){
   background-color: #84e8f5 !important;
