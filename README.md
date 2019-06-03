@@ -5,7 +5,7 @@ Tecnologias usadas
 Javascript 
 JQuery
 Materialize 
-HTNL5 
+HTML5 
 CSS3
 SweetAlert
 
